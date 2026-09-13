@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Konstruct construction management landing page">
+  <title>Konstruct | Construction management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero" id="home">
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <a class="hero__logo" href="#home" aria-label="Konstruct home">Konstruct</a>
+      <div class="hero__copy">
+        <h1>Partner with Konstruct</h1>
+        <p>An award-winning construction management firm</p>
+      </div>
+      <a class="hero__scroll" href="#about">Scroll down</a>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#home">Konstruct</a>
+      <button class="nav__toggle" type="button" aria-label="Open navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__list">
+        <li><a class="nav__link nav__link--active" href="#home">Home</a></li>
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#services">Services</a></li>
+        <li><a class="nav__link" href="#work">Work</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page-grid">
+    <section class="story section" id="about">
+      <div class="container story__grid">
+        <div class="section-heading">
+          <p class="eyebrow">Our story</p>
+          <span class="heading-line"></span>
+        </div>
+        <div class="story__content">
+          <div class="story__text">
+            <h2>Founded in 2011 by John Mathews Smith, Konstruct has become the number one construction management firm.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a arcu sit amet mauris elementum vestibulum. Integer posuere, erat vitae feugiat cursus, libero massa efficitur nibh, vitae posuere justo purus at mi.</p>
+          </div>
+          <div class="story__cards" aria-label="Construction process">
+            <article class="story-card story-card--plan"><span>We plan</span></article>
+            <article class="story-card story-card--manage"><span>We manage</span></article>
+            <article class="story-card story-card--build"><span>We build</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities section" id="services">
+      <div class="container capabilities__top">
+        <div class="section-heading">
+          <p class="eyebrow">Our capabilities</p>
+          <span class="heading-line"></span>
+        </div>
+        <p class="capabilities__intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at lacus vel velit posuere posuere.</p>
+        <a class="button" href="#contact">All services</a>
+      </div>
+
+      <div class="container services-grid" id="work">
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true">⌂</div>
+          <h3>Project and construction management</h3>
+          <p>Reliable planning, coordination and delivery from the first drawing to the finished structure.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true">▣</div>
+          <h3>Structure and design</h3>
+          <p>Practical design decisions that balance quality, safety, budget and long-term performance.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true">◆</div>
+          <h3>Building and contracting</h3>
+          <p>Experienced teams turn ambitious plans into efficient, carefully finished construction projects.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container cta__inner">
+        <div>
+          <p class="eyebrow eyebrow--light">Let’s build something together</p>
+          <h2>Want to build something amazing?</h2>
+        </div>
+        <a class="button button--light" href="#contact-form">Get in touch</a>
+      </div>
+    </section>
+
+    <section class="newsletter section" aria-labelledby="newsletter-title">
+      <div class="container newsletter__inner">
+        <div>
+          <p class="eyebrow">Stay connected</p>
+          <h2 id="newsletter-title">Get in touch with our team</h2>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your name" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </label>
+          <label class="contact-form__message">
+            <span>Message</span>
+            <textarea name="message" rows="5" placeholder="Tell us about your project" required></textarea>
+          </label>
+          <button class="button" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="footer__brand" href="#home">Konstruct</a>
+        <p>Reliable construction management for ambitious projects.</p>
+      </div>
+      <div>
+        <p class="footer__title">Company</p>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+      </div>
+      <div>
+        <p class="footer__title">Contact</p>
+        <a href="mailto:hello@konstruct.example">hello@konstruct.example</a>
+        <a href="tel:+440000000000">+44 000 000 0000</a>
+      </div>
+    </div>
+    <p class="footer__copyright">© 2026 Konstruct. All rights reserved.</p>
+  </footer>
+</body>
+</html>

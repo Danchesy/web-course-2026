@@ -1,0 +1,1 @@
+https://www.figma.com/proto/zR1XfguUZ5wWWOy6ah30Xq/konstruct-template?node-id=0-2&p=f&t=WHSkHcC91C2yRpMH-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1
