@@ -65,3 +65,71 @@ function updateUI() {
         historyList.appendChild(li);
     });
 }
+
+
+
+// Start a new game
+function startNewGame() {
+    secretNumber = generateSecretNumber();
+    attempts = 0;
+    history = [];
+    isGameOver = false;
+    
+    guessInput.value = '';
+    guessInput.disabled = false;
+    checkBtn.disabled = false;
+    messageEl.textContent = 'Игра началась! Введите число.';
+    
+    updateUI();
+}
+
+// Handle the check button click
+function handleCheck() {
+    if (isGameOver) return;
+    
+    const userGuess = guessInput.value;
+    
+    // Validate input
+    if (!isValidInput(userGuess)) {
+        messageEl.textContent = 'Ошибка: введите ровно 4 цифры без повторений и букв.';
+        return;
+    }
+    
+    attempts++;
+    const guessArray = userGuess.split('').map(Number);
+    const result = countBullsAndCows(secretNumber, guessArray);
+    
+    // Add to history
+    history.push({
+        guess: userGuess,
+        bulls: result.bulls,
+        cows: result.cows
+    });
+    
+    // Check win condition
+    if (result.bulls === 4) {
+        messageEl.textContent = `Победа! Угадано за ${attempts} попыток.`;
+        isGameOver = true;
+        guessInput.disabled = true;
+        checkBtn.disabled = true;
+    } else {
+        messageEl.textContent = `Быков: ${result.bulls}, Коров: ${result.cows}`;
+    }
+    
+    updateUI();
+    guessInput.value = '';
+}
+
+// Event listeners
+checkBtn.addEventListener('click', handleCheck);
+newGameBtn.addEventListener('click', startNewGame);
+
+// Allow pressing Enter to check
+guessInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        handleCheck();
+    }
+});
+
+// Initialize game on page load
+startNewGame();
