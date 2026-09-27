@@ -58,3 +58,85 @@ async function playSequence() {
     gameBoard.classList.remove('disabled'); // Allow clicks
     statusMessage.textContent = 'Ваш ход!';
 }
+
+
+// Handle the player clicking a sector
+function handleSectorClick(event) {
+    // Ignore clicks if game is not active or sequence is showing
+    if (!isGameActive || isShowingSequence) return;
+
+    const clickedIndex = parseInt(event.target.dataset.index);
+    
+    // Add to player's current input
+    playerSequence.push(clickedIndex);
+    
+    // Visual feedback for the click
+    const sector = event.target;
+    sector.classList.add('active');
+    setTimeout(() => sector.classList.remove('active'), 200);
+
+    // Check the player's input against the sequence
+    const currentStepIndex = playerSequence.length - 1;
+    if (playerSequence[currentStepIndex] !== sequence[currentStepIndex]) {
+        // Wrong move, game over
+        handleGameOver();
+        return;
+    }
+
+    // If the player completed the entire sequence
+    if (playerSequence.length === sequence.length) {
+        // Move to the next round
+        level++;
+        levelDisplay.textContent = level;
+        
+        // Add a new step and play the sequence again
+        addRandomStep();
+        
+        // Small delay before showing the next sequence
+        const nextRoundTimer = setTimeout(() => {
+            playSequence();
+        }, 1000);
+        timers.push(nextRoundTimer);
+    }
+}
+
+// End the game
+function handleGameOver() {
+    isGameActive = false;
+    isShowingSequence = false;
+    clearAllTimers(); // Important: stop any running timers
+    
+    gameBoard.classList.add('disabled');
+    statusMessage.textContent = `Игра окончена! Вы дошли до уровня ${level}`;
+    
+    // Optionally reset the level display, but keep the result in message
+    levelDisplay.textContent = level; 
+}
+
+// Start the game
+function startGame() {
+    // Reset everything
+    clearAllTimers();
+    sequence = [];
+    playerSequence = [];
+    level = 0;
+    isGameActive = true;
+    isShowingSequence = false;
+    
+    levelDisplay.textContent = level;
+    gameBoard.classList.remove('disabled');
+    statusMessage.textContent = 'Игра началась!';
+    
+    // Start the first round
+    level++;
+    levelDisplay.textContent = level;
+    addRandomStep();
+    playSequence();
+}
+
+// Event listeners
+sectors.forEach(sector => {
+    sector.addEventListener('click', handleSectorClick);
+});
+
+startBtn.addEventListener('click', startGame);
