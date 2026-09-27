@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра Simon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Simon говорит</h1>
+    <p>Уровень: <span id="level-display">0</span></p>
+    
+    <div class="game-board">
+        <div class="sector green" data-index="0"></div>
+        <div class="sector red" data-index="1"></div>
+        <div class="sector yellow" data-index="2"></div>
+        <div class="sector blue" data-index="3"></div>
+    </div>
+    
+    <div class="controls">
+        <button id="start-btn">Старт</button>
+    </div>
+    
+    <p id="status-message">Нажмите «Старт», чтобы начать игру.</p>
+
+    <script src="script.js"></script>
+</body>
+</html>

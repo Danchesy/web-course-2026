@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.sector {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Making them circles */
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.1s, transform 0.1s;
+}
+
+.sector.green { background-color: #2ecc71; }
+.sector.red { background-color: #e74c3c; }
+.sector.yellow { background-color: #f1c40f; }
+.sector.blue { background-color: #3498db; }
+
+/* Active state for highlighting */
+.sector.active {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px white;
+}
+
+/* Disabled state to block clicks */
+.game-board.disabled .sector {
+    pointer-events: none;
+}
+
+#status-message {
+    font-weight: bold;
+    color: #333;
+}
