@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    font-family: monospace;
+    color: white;
+}
+
+.game-container {
+    position: relative;
+    text-align: center;
+}
+
+canvas {
+    background-color: #111;
+    border: 2px solid #555;
+    display: block;
+}
+
+#score-display {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 8px;
+}
+
+#game-over.hidden {
+    display: none;
+}
+
+#restart-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: inherit;
+    background: white;
+    border: none;
+    border-radius: 4px;
+}
