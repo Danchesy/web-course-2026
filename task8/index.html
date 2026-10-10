@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>zen money</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <h1>zen money</h1>
+        
+        <div class="summary" id="summary">
+            <span>income: 0</span>
+            <span>expense: 0</span>
+            <span>balance: 0</span>
+        </div>
+
+        <form id="transaction-form">
+            <input type="hidden" id="edit-id">
+            <input type="number" id="amount" placeholder="amount" required>
+            
+            <select id="type">
+                <option value="income">income</option>
+                <option value="expense">expense</option>
+            </select>
+
+            <select id="category" required>
+                <option value="">select category</option>
+            </select>
+
+            <input type="date" id="date" required>
+            <input type="text" id="comment" placeholder="comment">
+            
+            <button type="submit" id="submit-btn">add</button>
+            <button type="button" id="cancel-btn" class="hidden">cancel</button>
+        </form>
+
+        <div id="transactions-list"></div>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
