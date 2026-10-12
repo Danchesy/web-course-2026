@@ -1,7 +1,16 @@
 {
   "transactions": [],
   "categories": [
-    { "id": 1, "name": "Еда", "type": "expense" },
-    { "id": 2, "name": "Зарплата", "type": "income" }
-  ]
+    {
+      "id": "1",
+      "name": "Еда",
+      "type": "expense"
+    },
+    {
+      "id": "2",
+      "name": "Зарплата",
+      "type": "income"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
