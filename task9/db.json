@@ -1,5 +1,41 @@
 {
-  "transactions": [],
-  "categories": [],
+  "transactions": [
+    {
+      "amount": 123,
+      "type": "income",
+      "category": "in",
+      "date": "2026-10-20",
+      "comment": "nononon",
+      "id": "znMI-JOG70o"
+    },
+    {
+      "amount": 123,
+      "type": "expense",
+      "category": "ex",
+      "date": "2026-10-06",
+      "comment": "scada",
+      "id": "Tejf7MbKdtE"
+    },
+    {
+      "amount": 234,
+      "type": "income",
+      "category": "in",
+      "date": "2026-10-29",
+      "comment": "sjkbdabcjka",
+      "id": "Zz1Sq0N1Rfw"
+    }
+  ],
+  "categories": [
+    {
+      "name": "in",
+      "type": "income",
+      "id": "SKj-4X6wvS4"
+    },
+    {
+      "name": "ex",
+      "type": "expense",
+      "id": "2xvDknLNDNU"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

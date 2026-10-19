@@ -160,6 +160,13 @@ async function init() {
         filters: settings.filters,
         theme: settings.theme
     };
+
+    const categoryExists = state.categories.some(c => c.name === state.filters.category);
+    if (!categoryExists) {
+        state.filters.category = '';
+        saveFilters(state.filters);
+    }
+
     applyTheme(elements, state.theme);
     applyFiltersToInputs(elements, state.filters);
     fillCategorySelects(elements, state.categories, state.filters);

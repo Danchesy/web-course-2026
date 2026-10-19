@@ -1,5 +1,3 @@
-// api.js (добавлена функция createCategory)
-
 const apiUrl = 'http://localhost:3001';
 
 export async function getTransactions() {
@@ -24,7 +22,6 @@ export async function getCategories() {
     }
 }
 
-// create a new category on the server
 export async function createCategory(category) {
     try {
         const response = await fetch(`${apiUrl}/categories`, {

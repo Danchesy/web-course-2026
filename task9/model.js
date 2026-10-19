@@ -14,11 +14,21 @@ export async function loadModel() {
 }
 
 export function getFiltered(transactions, filters) {
+    // if no filters are set, return all transactions
+    const hasCategory = filters.category && filters.category.trim() !== '';
+    const hasType = filters.type && filters.type !== 'all';
+    const hasDateFrom = filters.dateFrom && filters.dateFrom.trim() !== '';
+    const hasDateTo = filters.dateTo && filters.dateTo.trim() !== '';
+
+    if (!hasCategory && !hasType && !hasDateFrom && !hasDateTo) {
+        return transactions;
+    }
+
     return transactions.filter(t => {
-        if (filters.category && t.category !== filters.category) return false;
-        if (filters.type !== 'all' && t.type !== filters.type) return false;
-        if (filters.dateFrom && t.date < filters.dateFrom) return false;
-        if (filters.dateTo && t.date > filters.dateTo) return false;
+        if (hasCategory && t.category !== filters.category) return false;
+        if (hasType && t.type !== filters.type) return false;
+        if (hasDateFrom && t.date < filters.dateFrom) return false;
+        if (hasDateTo && t.date > filters.dateTo) return false;
         return true;
     });
 }
