@@ -33,7 +33,7 @@ function SummaryCards({ summary }) {
   );
 }
 
-function TransactionForm({
+export function TransactionForm({
   categories,
   form,
   editingId,
@@ -147,7 +147,7 @@ function TransactionList({ transactions, deletingId, onEdit, onDelete }) {
           <div className="transaction-topline">
             <Link
               className="transaction-title"
-              href={`/transactions/${encodeURIComponent(transaction.id)}`}
+              href={`/transaction/${encodeURIComponent(transaction.id)}`}
             >
               <span
                 className={`type-dot ${transaction.type}`}
@@ -233,20 +233,27 @@ export default function TransactionsView({
       ) : (
         <>
           <SummaryCards summary={summary} />
-          <TransactionForm
-            categories={categories}
-            form={form}
-            editingId={editingId}
-            isSaving={isSaving}
-            onChange={onFormChange}
-            onSubmit={onSubmit}
-            onCancelEdit={onCancelEdit}
-          />
+          {editingId !== null && (
+            <TransactionForm
+              categories={categories}
+              form={form}
+              editingId={editingId}
+              isSaving={isSaving}
+              onChange={onFormChange}
+              onSubmit={onSubmit}
+              onCancelEdit={onCancelEdit}
+            />
+          )}
 
           <section aria-labelledby="transactions-heading">
             <div className="panel-heading list-heading">
               <h2 id="transactions-heading">История операций</h2>
-              <span className="nav-link">{transactions.length} операций</span>
+              <div className="transaction-actions">
+                <span className="nav-link">{transactions.length} операций</span>
+                <Link className="primary-button" href="/add">
+                  Добавить операцию
+                </Link>
+              </div>
             </div>
             <div className="filters" aria-label="Фильтры операций">
               <label className="field">

@@ -1,12 +1,12 @@
 {
   "transactions": [
     {
-      "id": "MnKTM1BHwQM",
       "amount": 36765,
       "type": "income",
       "category": "Зарплата",
       "date": "2026-10-28",
-      "comment": "Основная зарплата"
+      "comment": "Основная зарплата",
+      "id": "MnKTM1BHwQM"
     },
     {
       "id": "9gGvQxDyn04",
@@ -23,6 +23,14 @@
       "category": "Транспорт",
       "date": "2026-10-18",
       "comment": "Проездной"
+    },
+    {
+      "amount": 12346,
+      "type": "expense",
+      "category": "Транспорт",
+      "date": "2026-11-09",
+      "comment": "",
+      "id": "jpsFRO0"
     }
   ],
   "categories": [

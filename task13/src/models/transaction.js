@@ -1,13 +1,11 @@
-function apiUrl(path) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-  return `${baseUrl}${path}`;
-}
-
 async function request(path, options) {
-  const response = await fetch(apiUrl(path), options);
+  const response = await fetch(path, options);
 
   if (!response.ok) {
-    throw new Error(`Не удалось выполнить запрос: ${response.status}`);
+    const result = await response.json();
+    throw new Error(
+      result.error || `Не удалось выполнить запрос: ${response.status}`
+    );
   }
 
   if (response.status === 204) {
@@ -25,48 +23,37 @@ function jsonOptions(method, data) {
   };
 }
 
-export function getTransactions() {
-  return request('/transactions');
+export function getTransactions(filters = {}) {
+  const params = new URLSearchParams(filters);
+  return request(`/api/transactions?${params}`);
 }
 
 export function getTransaction(id) {
-  return request(`/transactions/${encodeURIComponent(id)}`);
+  return request(`/api/transactions/${encodeURIComponent(id)}`);
 }
 
 export function getCategories() {
-  return request('/categories');
+  return request('/api/categories');
 }
 
 export function createTransaction(transaction) {
-  return request('/transactions', jsonOptions('POST', transaction));
+  return request('/api/transactions', jsonOptions('POST', transaction));
+}
+
+export function createCategory(category) {
+  return request('/api/categories', jsonOptions('POST', category));
 }
 
 export function updateTransaction(id, transaction) {
   return request(
-    `/transactions/${encodeURIComponent(id)}`,
+    `/api/transactions/${encodeURIComponent(id)}`,
     jsonOptions('PUT', transaction)
   );
 }
 
 export function deleteTransaction(id) {
-  return request(`/transactions/${encodeURIComponent(id)}`, { method: 'DELETE' });
-}
-
-export function filterTransactions(transactions, filters) {
-  return transactions.filter((transaction) => {
-    if (filters.type !== 'all' && transaction.type !== filters.type) {
-      return false;
-    }
-    if (filters.category && transaction.category !== filters.category) {
-      return false;
-    }
-    if (filters.dateFrom && transaction.date < filters.dateFrom) {
-      return false;
-    }
-    if (filters.dateTo && transaction.date > filters.dateTo) {
-      return false;
-    }
-    return true;
+  return request(`/api/transactions/${encodeURIComponent(id)}`, {
+    method: 'DELETE'
   });
 }
 

@@ -3,9 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   calculateSummary,
-  createTransaction,
   deleteTransaction,
-  filterTransactions,
   getCategories,
   getTransactions,
   updateTransaction,
@@ -43,9 +41,11 @@ export default function TransactionsController() {
     let isCurrent = true;
 
     async function loadData() {
+      setIsLoading(true);
+      setError('');
       try {
         const [loadedTransactions, loadedCategories] = await Promise.all([
-          getTransactions(),
+          getTransactions(filters),
           getCategories()
         ]);
         if (isCurrent) {
@@ -67,15 +67,11 @@ export default function TransactionsController() {
     return () => {
       isCurrent = false;
     };
-  }, []);
+  }, [filters]);
 
-  const visibleTransactions = useMemo(
-    () => filterTransactions(transactions, filters),
-    [transactions, filters]
-  );
   const summary = useMemo(
-    () => calculateSummary(visibleTransactions),
-    [visibleTransactions]
+    () => calculateSummary(transactions),
+    [transactions]
   );
 
   function handleFormChange(field, value) {
@@ -109,20 +105,9 @@ export default function TransactionsController() {
     setIsSaving(true);
     setError('');
     try {
-      if (editingId === null) {
-        const created = await createTransaction(transaction);
-        setTransactions((currentTransactions) => [
-          created,
-          ...currentTransactions
-        ]);
-      } else {
-        const updated = await updateTransaction(editingId, transaction);
-        setTransactions((currentTransactions) =>
-          currentTransactions.map((item) =>
-            String(item.id) === String(editingId) ? updated : item
-          )
-        );
-      }
+      await updateTransaction(editingId, transaction);
+      const currentTransactions = await getTransactions(filters);
+      setTransactions(currentTransactions);
       setForm(createEmptyForm());
       setEditingId(null);
     } catch (saveError) {
@@ -170,7 +155,7 @@ export default function TransactionsController() {
 
   return (
     <TransactionsView
-      transactions={visibleTransactions}
+      transactions={transactions}
       categories={categories}
       filters={filters}
       form={form}
