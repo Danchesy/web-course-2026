@@ -1,0 +1,22 @@
+{
+  "name": "zen-money-next",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "server": "json-server --watch db.json --port 3001"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4"
+  },
+  "overrides": {
+    "postcss": "^8.5.32"
+  }
+}

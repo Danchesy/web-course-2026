@@ -1,0 +1,50 @@
+{
+  "transactions": [
+    {
+      "id": "MnKTM1BHwQM",
+      "amount": 36765,
+      "type": "income",
+      "category": "Зарплата",
+      "date": "2026-10-28",
+      "comment": "Основная зарплата"
+    },
+    {
+      "id": "9gGvQxDyn04",
+      "amount": 3213,
+      "type": "expense",
+      "category": "Еда",
+      "date": "2026-10-20",
+      "comment": "Покупки в магазине"
+    },
+    {
+      "id": "q8Wm2LxP3aB",
+      "amount": 1250,
+      "type": "expense",
+      "category": "Транспорт",
+      "date": "2026-10-18",
+      "comment": "Проездной"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Еда",
+      "type": "expense"
+    },
+    {
+      "id": "2",
+      "name": "Зарплата",
+      "type": "income"
+    },
+    {
+      "id": "3",
+      "name": "Транспорт",
+      "type": "expense"
+    },
+    {
+      "id": "4",
+      "name": "Подарки",
+      "type": "income"
+    }
+  ]
+}
