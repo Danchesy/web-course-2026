@@ -1,0 +1,42 @@
+<main class="todo-card">
+  <header class="heading">
+    <p class="eyebrow">Лабораторная работа №15</p>
+    <h1>Мои задачи</h1>
+    <p class="subtitle">Небольшой Todo-list на Angular</p>
+  </header>
+
+  <form class="todo-form" (ngSubmit)="addTodo()">
+    <input
+      type="text"
+      name="todoText"
+      [(ngModel)]="text"
+      placeholder="Например, повторить RxJS"
+      aria-label="Новая задача"
+    >
+    <button type="submit" [disabled]="!text.trim()">Добавить</button>
+  </form>
+
+  <p class="empty-state" *ngIf="todos.length === 0">Список пуст. Добавьте первую задачу.</p>
+
+  <ul class="todo-list" *ngIf="todos.length > 0">
+    <li class="todo-row" *ngFor="let todo of todos; trackBy: trackById">
+      <label class="todo-label" [class.is-completed]="todo.completed">
+        <input
+          type="checkbox"
+          [checked]="todo.completed"
+          (change)="toggleTodo(todo.id)"
+          [attr.aria-label]="'Выполнено: ' + todo.text"
+        >
+        <span>{{ todo.text }}</span>
+      </label>
+      <button
+        class="delete-button"
+        type="button"
+        (click)="deleteTodo(todo.id)"
+        [attr.aria-label]="'Удалить: ' + todo.text"
+      >Удалить</button>
+    </li>
+  </ul>
+
+  <footer class="count" *ngIf="todos.length > 0">Всего задач: {{ todos.length }}</footer>
+</main>
